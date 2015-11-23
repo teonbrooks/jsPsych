@@ -29,6 +29,7 @@
 				// optional parameters
 				trials[i].is_html = (typeof params.is_html === 'undefined') ? false : params.is_html;
 				trials[i].prompt = (typeof params.prompt === 'undefined') ? "" : params.prompt;
+				trials[i].trigger = params.triggers[i];
 			}
 			return trials;
 		};
@@ -63,6 +64,12 @@
 			if (trial.prompt !== "") {
 				display_element.append(trial.prompt);
 			}
+
+			//trigger the device
+			//socket must be declared globally to work
+			console.log('Triggering...')
+			socket.emit('message', trial.trigger);
+			console.log('Printing: ' + trial.trigger)
 
 			// store response
 			var response = {rt: -1, key: -1};
