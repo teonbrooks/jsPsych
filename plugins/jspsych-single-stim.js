@@ -52,6 +52,12 @@ jsPsych.plugins["single-stim"] = (function() {
       display_element.append(trial.prompt);
     }
 
+    //trigger the device
+    //socket must be declared globally to work
+    console.log('Triggering...')
+    socket.emit('message', trial.trigger);
+    console.log('Printing: ' + trial.trigger)
+
     // store response
     var response = {
       rt: -1,
