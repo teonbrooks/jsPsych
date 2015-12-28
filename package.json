@@ -1,0 +1,16 @@
+{
+  "name": "jspsych",
+  "version": "4.3.0",
+  "description": "A JavaScript library for creating and running behavioral experiments in a web browser",
+  "author": "Josh de Leeuw",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jodeleeuw/jsPsych.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jodeleeuw/issues"
+  },
+  "homepage": "http://www.jspsych.org"
+}
+
