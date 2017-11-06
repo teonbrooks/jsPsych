@@ -5,7 +5,16 @@
  * documentation: docs.jspsych.org
  *
  **/
-window.jsPsych = (function() {
+
+(function (root, factory) {
+  if(typeof define === "function" && define.amd) {
+     define([], factory);
+  } else if(typeof module === "object" && module.exports) {
+     module.exports = factory();
+  } else {
+     root.jsPsych = factory();
+  }
+}(this, function jsPsych() {
 
   var core = {};
 
@@ -920,7 +929,7 @@ window.jsPsych = (function() {
   document.documentElement.setAttribute('jspsych', 'present');
 
   return core;
-})();
+}));
 
 jsPsych.plugins = (function() {
 
