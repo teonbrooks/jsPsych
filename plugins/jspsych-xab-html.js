@@ -7,8 +7,17 @@
  * documentation: docs.jspsych.org
  *
  */
+const jsPsych = window.jsPsych || require('jspsych');
 
-jsPsych.plugins['xab-html'] = (function() {
+(function (root, factory) {
+  if(typeof define === "function" && define.amd) {
+     define([], factory);
+  } else if(typeof module === "object" && module.exports) {
+     module.exports = factory;
+  } else {
+     root.jsPsych.plugins['xab-html'] = factory;
+  }
+}(this, (function() {
 
   var plugin = {};
 
@@ -69,7 +78,7 @@ jsPsych.plugins['xab-html'] = (function() {
   }
 
   plugin.trial = function(display_element, trial) {
-    
+
     // unpack the stimuli array
     trial.x_path = trial.stimuli[0];
 
@@ -198,4 +207,5 @@ jsPsych.plugins['xab-html'] = (function() {
   };
 
   return plugin;
-})();
+})()
+));

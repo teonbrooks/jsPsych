@@ -7,8 +7,17 @@
  * documentation: docs.jspsych.org
  *
  **/
+const jsPsych = window.jsPsych || require('jspsych');
 
-jsPsych.plugins["serial-reaction-time-mouse"] = (function() {
+(function (root, factory) {
+  if(typeof define === "function" && define.amd) {
+     define([], factory;
+  } else if(typeof module === "object" && module.exports) {
+     module.exports = factory;
+  } else {
+     root.jsPsych.plugins["serial-reaction-time-mouse"] = factory;
+  }
+}(this, (function() {
 
   var plugin = {};
 
@@ -71,7 +80,7 @@ jsPsych.plugins["serial-reaction-time-mouse"] = (function() {
         pretty_name: 'Allow nontarget response',
         default: false,
         description: 'If true, then user can make nontarget response.'
-      }, 
+      },
       prompt: {
         type: jsPsych.plugins.parameterType.STRING,
         pretty_name: 'Prompt',
@@ -210,4 +219,5 @@ jsPsych.plugins["serial-reaction-time-mouse"] = (function() {
   }
 
   return plugin;
-})();
+})()
+));
